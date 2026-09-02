@@ -12,38 +12,31 @@ dependency, LSP API, IntelliJ IDEA Plugin Verifier target, installed test, and
 documentation together. Do not retain older-generation API compatibility
 unless explicitly requested.
 
-Every LSP release requires a new author-signed plugin ZIP:
+## Release artifact
 
-```text
-npm run release:build -- jetbrains <plugin-version> <lsp-version>
-npm run release:jetbrains -- <plugin-version>
-```
+Every LSP release requires a new author-signed plugin ZIP. The GitHub Release
+owns the exact reviewed ZIP, and that same file is uploaded unchanged to
+JetBrains Marketplace.
 
-Candidate signing reads `PANNONICO_JETBRAINS_CERTIFICATE_CHAIN`,
-`PANNONICO_JETBRAINS_PRIVATE_KEY`, and
-`PANNONICO_JETBRAINS_PRIVATE_KEY_PASSWORD` from the operator environment. Never
-commit these values. Upload the exact GitHub Release ZIP manually to Marketplace
-and run `npm run release:verify -- jetbrains <plugin-version>` after approval.
+Each release machine may use its own unrelated self-signed author certificate.
+The certificate may change for a later plugin version; one plugin version must
+not be rebuilt or re-signed with a different key.
 
-The checked-in Gradle 9.1 wrapper requires JDK 25. Development acceptance uses
-the same Starter/Driver scenario without signing:
+Upload the GitHub Release ZIP manually to JetBrains Marketplace:
 
-```text
-PANNONICO_LSP_MANIFEST=/absolute/path/to/manifest.json \
-PANNONICO_TEST_WASMTIME=/absolute/path/to/wasmtime \
-npx nx run pannonico-jetbrains:test-installed-dev
-```
+1. Sign in and open **Upload plugin** or **Upload update**.
+2. Select the `vx.rs` Vendor profile.
+3. Upload the exact `pannonico-jetbrains.zip` from the printed GitHub Release
+   URL.
+4. Keep the plugin free and use the default release channel.
+5. Use [EULA.md](EULA.md) when Marketplace requests the plugin EULA.
+6. Submit the plugin for asynchronous review.
 
-Starter downloads unified IntelliJ IDEA 2026.2 by default. When that exact
-release is already installed, `PANNONICO_JETBRAINS_IDE_HOME` may name its
-application root; the identical automated scenario and plugin build-range
-check still apply. The test uses only free-tier HTML and platform LSP features;
-it does not require an Ultimate subscription.
-
-Final release acceptance consumes only the already author-signed ZIP and exact
-local LSP/Wasmtime files; it does not rebuild, download, repair, or sign them.
-A failure retains `failure.json`, stdout, stderr, and Gradle report locations
-below `.local/test-results/jetbrains/runs/`; success removes its run directory.
+Marketplace review is asynchronous, so there is no immediate Marketplace
+readback gate. Before publication, the exact signed candidate must pass plugin
+structure, signature, Plugin Verifier, and installed-IDE acceptance against
+IntelliJ IDEA 2026.2. The acceptance scenario uses only free-tier HTML and
+platform LSP features; it does not require an Ultimate subscription.
 
 Pannonico's canonical editor LSP is `pannonico-lsp.wasm`. This plugin executes
 it through the repository-pinned, verified Wasmtime release and never resolves

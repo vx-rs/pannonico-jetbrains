@@ -26,6 +26,20 @@ A new IntelliJ IDEA installation may show an optional Ultimate trial tab or
 badge. Neither activation nor a paid subscription is required for Pannonico's
 HTML acceptance scenario.
 
+After Marketplace publication, install the plugin in IntelliJ IDEA 2026.2:
+
+1. Open **Settings** or **Preferences**, then **Plugins**.
+2. Open **Marketplace**, search for `Pannonico`, and select **Install**.
+3. Restart the IDE when requested.
+4. Open a project whose root contains `pannonico.yaml` or `.pannonico`.
+5. Open an HTML or Markdown file below that root.
+
+To install the exact GitHub Release before Marketplace approval, download
+`pannonico-jetbrains.zip` from the matching signed release. In **Plugins**, use
+the gear menu and **Install Plugin from Disk**, select the ZIP without
+extracting or repackaging it, and restart the IDE. This is a user installation
+path; release acceptance remains the automated Starter/Driver test.
+
 For offline use, configure both exact pinned files in the IDE VM options:
 
 ```text
