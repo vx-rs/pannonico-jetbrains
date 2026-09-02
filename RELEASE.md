@@ -1,5 +1,17 @@
 # JetBrains release
 
+## Release history
+
+### 0.5.1
+
+- Add the Marketplace plugin icon.
+- List completion, hover, definition, diagnostic, HTML, and Markdown support
+  in the plugin description.
+
+### 0.5.0
+
+- Publish the initial JetBrains plugin release for IntelliJ Platform 2026.2.
+
 The initial release is `0.5.0`. Later JetBrains-only changes increment the
 JetBrains patch version without forcing unrelated tracks to use the same patch
 number.
