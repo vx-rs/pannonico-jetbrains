@@ -34,6 +34,16 @@ After Marketplace publication, install the plugin in IntelliJ IDEA 2026.2:
 4. Open a project whose root contains `pannonico.yaml` or `.pannonico`.
 5. Open an HTML or Markdown file below that root.
 
+## Completion
+
+Template data completion in WebStorm:
+
+![Pannonico template completion in WebStorm](media/webstorm-template.png)
+
+Built-in Pannonico metadata completion in a Vite template:
+
+![Pannonico metadata completion in a Vite template](media/webstorm-vite.png)
+
 To install the exact GitHub Release before Marketplace approval, download
 `pannonico-jetbrains.zip` from the matching signed release. In **Plugins**, use
 the gear menu and **Install Plugin from Disk**, select the ZIP without
