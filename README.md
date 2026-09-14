@@ -9,7 +9,7 @@ untilBuild = 262.*
 
 It uses the current `LspIntegrationProvider` API and starts the exact pinned
 `pannonico-lsp.wasm` through verified Wasmtime 48.0.1 for each marked project
-root containing `.pannonico` or `pannonico.yaml`. HTML and Markdown are
+root containing `.pannonico` or `pannonico.yaml`. HTML, Markdown, YAML and JSON are
 supported without redefining their IDE language implementations. The plugin ZIP
 contains neither the LSP nor Wasmtime.
 
@@ -35,6 +35,23 @@ After Marketplace publication, install the plugin in IntelliJ IDEA 2026.2:
 5. Open an HTML or Markdown file below that root.
 
 ## Completion
+
+Typing the opening quote in `{{template "shell/header"}}` offers discovered
+partial directories and names. Hover or Quick Documentation explains a known
+reference and its source. Completion also covers layout selectors, `get`/`has`
+dotted keys, `index` exact keys, `pageIs` page names, translation fallback
+languages and date tokens.
+
+Markdown inline, fenced, and indented code remains literal documentation, so
+the plugin does not show template completion, Quick Documentation, definitions,
+or diagnostics inside it. The same applies inside an HTML wrapper marked with
+`pannonico-verbatim`. Language features resume in live source after the
+literal region.
+
+Configuration/data, frontmatter and template syntax errors appear as ordinary
+editor highlights with compiler explanations. Save a correction to clear the
+finding. These checks also run when the project cannot load. Use a CLI/MCP build
+for rendered HTML and errors that depend on execution.
 
 Template data completion in WebStorm:
 

@@ -2,6 +2,16 @@
 
 ## Release history
 
+### 0.6.0
+
+- Select Pannonico LSP 0.6.0 and synchronize YAML and JSON project inputs.
+- Add completion and Quick Documentation for project references and compiler
+  diagnostics that remain available when a project cannot finish loading.
+- Ignore Pannonico-like source inside Markdown code and
+  `pannonico-verbatim` wrappers while retaining language features in live
+  source.
+- Preserve server-filtered completion results in IntelliJ Platform 2026.2.
+
 ### 0.5.1
 
 - Add the Marketplace plugin icon.
