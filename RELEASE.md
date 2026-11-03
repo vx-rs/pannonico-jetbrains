@@ -2,6 +2,13 @@
 
 ## Release history
 
+### 0.7.0
+
+- Select Pannonico LSP 0.7.0, which keeps idle WASI stdin sessions open.
+- Target IntelliJ Platform 2026.2 with build range `262` through `262.*`.
+- Include the registered completion typed handler in release builds so the IDE
+  can load it and preserve partial-path completion triggers.
+
 ### 0.6.0
 
 - Select Pannonico LSP 0.6.0 and synchronize YAML and JSON project inputs.

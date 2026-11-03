@@ -1,5 +1,7 @@
 # Pannonico for JetBrains IDEs
 
+> **Pre-1.0 development notice:** Pannonico is under active development. Until version 1.0.0, public contracts and user-visible behavior may change between releases. Expect breaking changes while the program and distribution model are being stabilized.
+
 This plugin targets IntelliJ Platform 2026.2, build branch 262, only:
 
 ```text
