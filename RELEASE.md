@@ -2,6 +2,16 @@
 
 ## Release history
 
+### 0.7.2
+
+- Replace the path hook marked internal in IntelliJ IDEA 2026.3 with the public
+  URI hook available on the initial 262 baseline. Encode filename characters
+  as URI path data and preserve reverse navigation through the WASI preopen.
+- Select Pannonico LSP 0.7.1, which preserves saved compiler diagnostics after
+  equivalent or delayed full-text synchronization.
+- Verify fixed IntelliJ IDEA 2026.2.4 (262.11879.100) and 2026.3 (263.7307.200)
+  targets, retaining the 262 minimum, open upper range and Wasmtime 48.0.1.
+
 ### 0.7.1
 
 - Preserve IntelliJ Platform build 262 as the minimum and remove the upper
@@ -75,7 +85,11 @@ Upload the GitHub Release ZIP manually to JetBrains Marketplace:
 Marketplace review is asynchronous, so there is no immediate Marketplace
 readback gate. Before publication, the exact signed candidate must pass plugin
 structure, signature, Plugin Verifier, and installed-IDE acceptance against
-IntelliJ IDEA 2026.2. The acceptance scenario uses only free-tier HTML and
+IntelliJ IDEA 2026.2.4 (262.11879.100) and 2026.3 (263.7307.200). These fixed
+verification targets do not cap installation eligibility. Installed acceptance
+uses the existing `PANNONICO_JETBRAINS_IDE_HOME` override for each selected host
+and exercises URI-sensitive filenames, definition navigation and saved compiler
+diagnostic recovery. The acceptance scenario uses only free-tier HTML and
 platform LSP features; it does not require an Ultimate subscription.
 
 Pannonico's canonical editor LSP is `pannonico-lsp.wasm`. This plugin executes
