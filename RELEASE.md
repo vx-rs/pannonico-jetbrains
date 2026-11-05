@@ -2,6 +2,14 @@
 
 ## Release history
 
+### 0.7.1
+
+- Preserve IntelliJ Platform build 262 as the minimum and remove the upper
+  host-version bound. Newer IDE versions are eligible on a best-effort basis.
+- Disable Gradle's default upper bound in checked-in configuration so every
+  build preserves the open-ended range without an operator flag.
+- Retain Pannonico LSP 0.7.0 and the verified Wasmtime 48.0.1 runtime.
+
 ### 0.7.0
 
 - Select Pannonico LSP 0.7.0, which keeps idle WASI stdin sessions open.
@@ -33,13 +41,16 @@ The initial release is `0.5.0`. Later JetBrains-only changes increment the
 JetBrains patch version without forcing unrelated tracks to use the same patch
 number.
 
-Pannonico supports only the current JetBrains platform generation. The initial
-release uses `sinceBuild = 262` and `untilBuild = 262.*`.
+Pannonico preserves the initial IntelliJ Platform build 262 minimum and sets no
+upper bound. Newer minor, patch and major IDE versions are eligible on a
+best-effort basis. The maintained IntelliJ IDEA 2026.2 host is the tested
+baseline, not an installation ceiling. Earlier hosts are not supported.
 
-When moving to a new generation, update the build range, IntelliJ Platform
-dependency, LSP API, IntelliJ IDEA Plugin Verifier target, installed test, and
-documentation together. Do not retain older-generation API compatibility
-unless explicitly requested.
+Gradle defaults `until-build` to the selected platform branch even when the
+source descriptor omits it. The checked-in `untilBuild = provider { null }`
+disables that default for every build; the operator supplies no compatibility
+override. When an observed IDE incompatibility needs an update, review the API,
+dependency, verifier target, installed test and documentation together.
 
 ## Release artifact
 

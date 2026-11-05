@@ -2,14 +2,19 @@
 
 > **Pre-1.0 development notice:** Pannonico is under active development. Until version 1.0.0, public contracts and user-visible behavior may change between releases. Expect breaking changes while the program and distribution model are being stabilized.
 
-This plugin targets IntelliJ Platform 2026.2, build branch 262, only:
+This plugin keeps IntelliJ Platform 2026.2, build branch 262, as its minimum
+and has no upper host-version bound:
 
 ```text
 sinceBuild = 262
-untilBuild = 262.*
 ```
 
-It uses the current `LspIntegrationProvider` API and starts the exact pinned
+Newer minor, patch and major IDE versions are eligible on a best-effort basis.
+Report observed failures through the issue tracker. The checked-in build
+configuration explicitly disables Gradle's default upper bound on every build;
+no extra release flag is needed.
+
+It uses the baseline `LspIntegrationProvider` API and starts the exact pinned
 `pannonico-lsp.wasm` through verified Wasmtime 48.0.1 for each marked project
 root containing `.pannonico` or `pannonico.yaml`. HTML, Markdown, YAML and JSON are
 supported without redefining their IDE language implementations. The plugin ZIP
@@ -19,7 +24,7 @@ The plugin uses platform modules shared by the JetBrains 262 family and does
 not depend on `com.intellij.modules.ultimate`. Unified IntelliJ IDEA is the
 single automated representative: its free tier includes core HTML support and
 continues after the optional Ultimate trial expires. Publish only after the
-current IntelliJ IDEA release passes Plugin Verifier and the installed
+maintained IntelliJ IDEA test host passes Plugin Verifier and the installed
 Starter/Driver scenario. Other JetBrains products are not tested as separate
 copies of that same platform-level integration; their own licensing still
 applies.
