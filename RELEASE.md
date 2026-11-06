@@ -7,6 +7,8 @@
 - Replace the path hook marked internal in IntelliJ IDEA 2026.3 with the public
   URI hook available on the initial 262 baseline. Encode filename characters
   as URI path data and preserve reverse navigation through the WASI preopen.
+- Complete pending per-file VFS writes before handing file URIs to the external
+  language server, so saved diagnostics use the completed disk content.
 - Select Pannonico LSP 0.7.1, which preserves saved compiler diagnostics after
   equivalent or delayed full-text synchronization.
 - Verify fixed IntelliJ IDEA 2026.2.4 (262.11879.100) and 2026.3 (263.7307.200)
@@ -91,6 +93,10 @@ uses the existing `PANNONICO_JETBRAINS_IDE_HOME` override for each selected host
 and exercises URI-sensitive filenames, definition navigation and saved compiler
 diagnostic recovery. The acceptance scenario uses only free-tier HTML and
 platform LSP features; it does not require an Ultimate subscription.
+
+The completion-prefix override and per-file VFS flush use public experimental
+platform APIs, which Plugin Verifier can report. The flush completes pending
+writes before the external language server reads saved project files.
 
 Pannonico's canonical editor LSP is `pannonico-lsp.wasm`. This plugin executes
 it through the repository-pinned, verified Wasmtime release and never resolves
