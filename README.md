@@ -14,11 +14,12 @@ Report observed failures through the issue tracker. The checked-in build
 configuration explicitly disables Gradle's default upper bound on every build;
 no extra release flag is needed.
 
-It uses the baseline `LspIntegrationProvider` API and starts the exact pinned
-`pannonico-lsp.wasm` through verified Wasmtime 48.0.1 for each marked project
-root containing `.pannonico` or `pannonico.yaml`. HTML, Markdown, YAML and JSON are
-supported without redefining their IDE language implementations. The plugin ZIP
-contains neither the LSP nor Wasmtime.
+When you open an HTML, Markdown, YAML, or JSON file, the plugin looks for the
+nearest project root with `.pannonico` or `pannonico.yaml`. It uses the
+platform's `LspIntegrationProvider` API to start that project's pinned
+`pannonico-lsp.wasm` through verified Wasmtime 48.0.1. The IDE keeps its
+existing support for those languages. The plugin acquires the server and
+runtime separately from the ZIP.
 
 The plugin uses platform modules shared by the JetBrains 262 family and does
 not depend on `com.intellij.modules.ultimate`. Unified IntelliJ IDEA is the
