@@ -2,6 +2,13 @@
 
 ## Release history
 
+### 0.8.0
+
+- Select Pannonico LSP 0.8.0 and Wasmtime 51.0.0.
+- Build with Kotlin 2.4.21, Gradle 9.9.2, and IntelliJ Platform Gradle plugin
+  2.20.1. Keep IntelliJ Platform build 262 as the minimum and keep the
+  installation range open.
+
 ### 0.7.2
 
 - Replace the path hook marked internal in IntelliJ IDEA 2026.3 with the public

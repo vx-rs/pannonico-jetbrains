@@ -17,7 +17,7 @@ no extra release flag is needed.
 When you open an HTML, Markdown, YAML, or JSON file, the plugin looks for the
 nearest project root with `.pannonico` or `pannonico.yaml`. It uses the
 platform's `LspIntegrationProvider` API to start that project's pinned
-`pannonico-lsp.wasm` through verified Wasmtime 48.0.1. The IDE keeps its
+`pannonico-lsp.wasm` through verified Wasmtime 51.0.0. The IDE keeps its
 existing support for those languages. The plugin acquires the server and
 runtime separately from the ZIP.
 
@@ -84,8 +84,8 @@ For offline use, configure both exact pinned files in the IDE VM options:
 ```
 
 Wasmtime is not bundled or republished. Pannonico selects official Wasmtime
-48.0.1 under `Apache-2.0 WITH LLVM-exception`; see
-<https://github.com/bytecodealliance/wasmtime/releases/tag/v48.0.1>.
+51.0.0 under `Apache-2.0 WITH LLVM-exception`; see
+<https://github.com/bytecodealliance/wasmtime/releases/tag/v51.0.0>.
 
 The plugin is available without charge. Pannonico product use remains subject
 to the licenses included with the release.
